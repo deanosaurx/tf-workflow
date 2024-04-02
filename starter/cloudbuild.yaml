@@ -1,0 +1,20 @@
+steps:
+  # Initialize Terraform
+  - name: 'hashicorp/terraform:latest'
+    args: ['init']
+    id: 'Terraform Init'
+
+  # Optional: Terraform Plan for visibility
+  - name: 'hashicorp/terraform:latest'
+    args: ['plan']
+    id: 'Terraform Plan'
+
+  # Apply Terraform
+  - name: 'hashicorp/terraform:latest'
+    args: ['apply', '-auto-approve']
+    id: 'Terraform Apply'
+
+  # Optional: Any additional Terraform or script steps can go here
+options:
+  defaultLogsBucketBehavior: REGIONAL_USER_OWNED_BUCKET
+timeout: '1200s'  # Adjust timeout according to your needs
